@@ -1,0 +1,11 @@
+user: alfio (alfio.martini@gmail.com,password01)
+user: user1,...,user4(userk@gmail.com, password01)
+admin: admin, password01, alfio.martini@gmail.com
+
+
+Todo:
+  - Update register (as in commerce). The way it is coded gives
+    an error if the user tries to register a username that already
+    exists.
+
+  - 
