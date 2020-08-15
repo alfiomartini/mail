@@ -2,13 +2,14 @@
 {% load static %}
 
 {% block body %}
-    <h5 class="user">{{ request.user.email }}</h5>
-
-    <button class="btn btn-sm btn-outline-primary mr-2" id="inbox">Inbox</button>
-    <button class="btn btn-sm btn-outline-primary mr-2" id="compose">Compose</button>
-    <button class="btn btn-sm btn-outline-primary mr-2" id="sent">Sent</button>
-    <button class="btn btn-sm btn-outline-primary mr-2" id="archived">Archived</button>
-    <a class="btn btn-sm btn-outline-primary mr-2" href="{% url 'logout' %}">Log Out</a>
+    <h5 class="edit-btn">{{ request.user.email }}</h5>
+    <div class="buttons">
+        <button class="btn btn-sm btn-outline-primary mr-2" id="inbox">Inbox</button>
+        <button class="btn btn-sm btn-outline-primary mr-2" id="compose">Compose</button>
+        <button class="btn btn-sm btn-outline-primary mr-2" id="sent">Sent</button>
+        <button class="btn btn-sm btn-outline-primary mr-2" id="archived">Archived</button>
+        <a class="btn btn-sm btn-outline-primary mr-2" href="{% url 'logout' %}">Log Out</a>
+    </div>
     <hr>
 
     <div id="emails-view"></div>

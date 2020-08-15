@@ -72,7 +72,7 @@ function load_mailbox(mailbox) {
     for (let k = 0;k < data.length; k++){
       li_elem = document.createElement('li');
       li_elem.innerHTML = `<span class = "inbox-sender"> ${data[k]['sender']}</span>
-      <span class="inbox-subject"> ${data[k]['subject']}</span>
+      <span class="inbox-subject"> ${data[k]['subject'].slice(0,45)}</span>
       <span class="inbox-date"> ${data[k]['timestamp']}</span>`;
       if (data[k]['read']){
         li_elem.className = 'inbox-message message-read';
