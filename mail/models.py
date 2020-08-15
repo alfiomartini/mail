@@ -3,7 +3,8 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    def __str__(self):
+        return f"{self.username} ({self.email})"
 
 
 class Email(models.Model):
@@ -18,13 +19,14 @@ class Email(models.Model):
 
     # see: https://www.programiz.com/python-programming/datetime/strftime
     def serialize(self):
+        # "timestamp": self.timestamp.strftime("%b %-d %Y, %-I:%M %p"),
         return {
             "id": self.id,
             "sender": self.sender.email,
             "recipients": [user.email for user in self.recipients.all()],
             "subject": self.subject,
             "body": self.body,
-            "timestamp": self.timestamp.strftime("%b %-d %Y, %-I:%M %p"),
+            "timestamp": self.timestamp.strftime('%b. %d, %Y, %H:%M'),
             "read": self.read,
             "archived": self.archived
         }

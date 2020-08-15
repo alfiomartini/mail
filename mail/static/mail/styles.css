@@ -1,3 +1,120 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color:#303030;
+}
+
+.main{
+    width: 90%;
+    margin:20px auto;
+}
+
+.main .user{
+   color: lightsteelblue;
+}
+
 textarea {
     min-height: 400px;
 }
+
+
+/* Inbox */
+
+.inbox-title{
+    color: lightsteelblue;
+    margin-bottom: 15px;
+ }
+
+ .btn-outline-primary {
+     background-color: whitesmoke !important;
+     color: black;
+ }
+
+ .btn-outline-primary:hover {
+    background-color: black !important;
+    color: whitesmoke !important;
+}
+.inbox-container{
+    list-style-type: none;
+}
+
+.inbox-message{
+    padding:5px 10px;
+    border: 1px solid black;
+}
+
+.inbox-message:hover{
+    cursor: pointer;
+}
+span.inbox-sender{
+    /* font-weight: bold; */
+    margin-right: 15px;
+}
+
+span.inbox-date{
+    float:right
+}
+
+.message-unread{
+    background-color: white;
+    color:black;
+}
+.message-read{
+    background-color: gray;
+    color:whitesmoke;
+}
+
+/* Messages */
+
+.email-header{
+    list-style-type: none;
+    background-color: white;
+    color: black;
+    padding: 20px;
+}
+
+.email-body{
+    border-top: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    margin-top: -20px;
+}
+
+.email-body p{
+    margin-top: 15px;
+}
+span.header-line{
+    font-weight: bold;
+}
+.email-body{
+    /* margin-top: 15px; */
+    /* preserve white spaces and newlines */
+    white-space: pre-wrap;
+}
+/* Compose */
+form label {
+    color: lightsteelblue;
+}
+/* Utilities */
+
+.edit-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 16px;
+    background-color: #333333;
+    padding: 4px 12px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .edit-btn:hover{
+    background-color: navy;
+    color: whitesmoke;
+    text-decoration: none;
+  } 

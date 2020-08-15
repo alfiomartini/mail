@@ -32,10 +32,13 @@ def compose(request):
     # Check recipient emails
     # request body seems to return a json response
     # and json.loads converts it to a python
+    
     data = json.loads(request.body)
+    
     # '.split' splits the string at the specified separator, and returns a list
     # '.strip' removes spaces at the beginning and at the end of the string:
     emails = [email.strip() for email in data.get("recipients").split(",")]
+
     if emails == [""]:
         return JsonResponse({
             "error": "At least one recipient required."
@@ -45,17 +48,18 @@ def compose(request):
     recipients = []
     for email in emails:
         try:
+            # get does not work if several users have the same email,
+            # like the same user being also an administrator
             user = User.objects.get(email=email)
             recipients.append(user)
         except User.DoesNotExist:
             return JsonResponse({
                 "error": f"User with email {email} does not exist."
             }, status=400)
-
     # Get contents of email
     subject = data.get("subject", "")
     body = data.get("body", "")
-
+    
     # Create one email for each recipient, plus sender
     users = set()
     users.add(request.user)
@@ -84,6 +88,7 @@ def mailbox(request, mailbox):
         emails = Email.objects.filter(
             user=request.user, recipients=request.user, archived=False
         )
+        print(emails)
     elif mailbox == "sent":
         emails = Email.objects.filter(
             user=request.user, sender=request.user
