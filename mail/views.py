@@ -174,15 +174,14 @@ def register(request):
             })
 
         # Attempt to create new user
-        try:
-            user = User.objects.create_user(email, email, password)
-            user.save()
-        except IntegrityError as e:
-            print(e)
-            return render(request, "mail/register.html", {
+        if User.objects.filter(email=email).exists():
+             return render(request, "mail/register.html", {
                 "message": "Email address already taken."
             })
-        login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        else:
+            user = User.objects.create_user(email, email, password)
+            user.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "mail/register.html")

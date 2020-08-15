@@ -119,8 +119,12 @@ form label {
     border-radius: 5px;
   }
   
-  /* .edit-btn:hover{
-    background-color: navy;
+  .edit-btn:hover{
+    background-color: black;
     color: whitesmoke;
     text-decoration: none;
-  }  */
+  } 
+
+  .message{
+      color: whitesmoke;
+  }

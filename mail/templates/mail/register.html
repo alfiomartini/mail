@@ -2,10 +2,10 @@
 
 {% block body %}
 
-    <h2>Register</h2>
+    <h3 class="inbox-title">Register</h3>
 
     {% if message %}
-        <div>{{ message }}</div>
+        <div class="message mb-4">{{ message }}</div>
     {% endif %}
 
     <form action="{% url 'register' %}" method="post">
@@ -22,6 +22,6 @@
         <input class="btn btn-primary" type="submit" value="Register">
     </form>
 
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    <a class="edit-btn mt-4" href="{% url 'login' %}">Already have an account? Log in here.</a>
 
 {% endblock %}
