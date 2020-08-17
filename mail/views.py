@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import JsonResponse
-from django.shortcuts import HttpResponse, HttpResponseRedirect, render
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render, redirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -136,6 +136,7 @@ def email(request, email_id):
         }, status=400)
 
 
+@csrf_exempt
 def login_view(request):
     if request.method == "POST":
 
@@ -154,6 +155,7 @@ def login_view(request):
             })
     else:
         return render(request, "mail/login.html")
+        # return redirect('index')
 
 
 def logout_view(request):

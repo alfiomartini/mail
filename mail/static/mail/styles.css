@@ -70,11 +70,16 @@ span.inbox-date{
     color:black;
 }
 .message-read{
-    background-color: gray;
+    background-color:darkslategray;
     color:whitesmoke;
 }
 
 /* Messages */
+
+.header-buttons .btn:hover {
+    background-color: black !important;
+    color: whitesmoke !important;
+}
 
 .email-header{
     list-style-type: none;

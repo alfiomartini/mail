@@ -1,17 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+  window.onpopstate = (event) =>{
+    if (event.state !== null){
+      let page = event.state.page;
+      console.log(page);
+      if (page === 'compose'){
+        compose_email();
+      }
+      else if (page === 'message'){
+        let message_id = event.state.message_id;
+        console.log(message_id);
+        getMessage(message_id);
+      }
+      else{
+        load_mailbox(page);
+      }
+    }
+  }
+
   // Use buttons to toggle between views
 
   let inbox = document.querySelector('#inbox');
-  inbox.addEventListener('click', () => load_mailbox('inbox'));
+  inbox.addEventListener('click', () => {
+    history.pushState({page:'inbox'},'', 'inbox');
+    load_mailbox('inbox');
+  });
   let sent = document.querySelector('#sent');
-  sent.addEventListener('click', () => load_mailbox('sent'));
+  sent.addEventListener('click', () => {
+      history.pushState({page:'sent'}, '', 'sent');
+      load_mailbox('sent');
+  });
   let archived = document.querySelector('#archived');
-  archived.addEventListener('click', () => load_mailbox('archive'));
+  archived.addEventListener('click', () => {
+    history.pushState({page:'sent'},'', 'archived');
+    load_mailbox('archive');
+  });
   let compose = document.querySelector('#compose');
-  compose.addEventListener('click', compose_email);
-
+  compose.addEventListener('click', () => {
+    history.pushState({page:'compose'}, '', 'compose');
+    compose_email(); 
+  });
   // By default, load the inbox
+  history.pushState({page:'inbox'},'', 'inbox');
   load_mailbox('inbox');
 });
 
@@ -81,7 +111,12 @@ function load_mailbox(mailbox) {
         li_elem.className = 'inbox-message message-unread';
       }
       li_elem.id = `${data[k]['id']}`;
-      li_elem.addEventListener('click', () => {getMessage(data[k]['id'])});
+      li_elem.addEventListener('click', () => {
+        let message_id = data[k]['id'];
+        history.pushState({page:'message', message_id:message_id},
+                          '',`message${message_id}`);
+        getMessage(message_id);
+      });
       ul_elem.append(li_elem)
     };
     emails_view.append(ul_elem);
@@ -114,7 +149,7 @@ function getMessage(id){
       button_list.className = 'header-buttons';
 
       let reply = document.createElement('button');
-      reply.className = 'btn btn-sm btn-outline-primary mt-3 mr-2';
+      reply.className = 'btn btn-sm btn-secondary mt-3 mr-2';
       reply.innerHTML = 'Reply';
       reply.addEventListener('click', () => {
         reply_email(email);
@@ -122,7 +157,7 @@ function getMessage(id){
       button_list.append(reply);
 
       let archive = document.createElement('button');
-      archive.className = 'btn btn-sm btn-outline-primary mt-3 mr-2';
+      archive.className = 'btn btn-sm btn-secondary mt-3 mr-2';
       if (email['archived']){
         archive.innerHTML = 'Unarchive';
         archive.addEventListener('click', () => {
@@ -147,7 +182,7 @@ function getMessage(id){
       });
 
       let unread = document.createElement('button');
-      unread.className = 'btn btn-sm btn-outline-primary mt-3 mr-2';
+      unread.className = 'btn btn-sm btn-secondary mt-3 mr-2';
       unread.innerHTML = 'Mark as unread';
       unread.addEventListener('click', () => {
         processUnread(id);
