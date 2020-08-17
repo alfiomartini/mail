@@ -21,7 +21,7 @@ def index(request):
         return HttpResponseRedirect(reverse("login"))
 
 
-@csrf_exempt # I am not sure I will keep this. It is enough to use it in the HTML form
+@csrf_exempt # I am not sure about this
 @login_required
 def compose(request):
 
@@ -29,9 +29,8 @@ def compose(request):
     if request.method != "POST":
         return JsonResponse({"error": "POST request required."}, status=400)
 
-    # Check recipient emails
-    # request body seems to return a json response
-    # and json.loads converts it to a python
+    # Get body = { recipients: to, subject: subject, body: body }, 
+    # from javascript fetch call
     
     data = json.loads(request.body)
     
@@ -62,7 +61,7 @@ def compose(request):
     
     # Create one email for each recipient, plus sender
     users = set()
-    users.add(request.user)
+    users.add(request.user) # sent mail box 
     users.update(recipients)  # union
     for user in users:
         email = Email(

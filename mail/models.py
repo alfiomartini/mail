@@ -6,7 +6,7 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.username} ({self.email})"
 
-
+# bellow, user is the target user
 class Email(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE, related_name="emails")
     sender = models.ForeignKey("User", on_delete=models.PROTECT, related_name="emails_sent")

@@ -2,6 +2,7 @@ user: alfio (alfio.martini@gmail.com,password01)
 user: user1,...,user4(userk@gmail.com, password01)
 admin: admin, password01, alfio.martini@gmail.com
 
+y2B video: https://youtu.be/2oK7NToNfp4
 
 Todo:
   - Update register (as in commerce). The way it is coded gives
