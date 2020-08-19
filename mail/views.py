@@ -21,7 +21,7 @@ def index(request):
         return HttpResponseRedirect(reverse("login"))
 
 
-@csrf_exempt # I am not sure about this
+@csrf_exempt 
 @login_required
 def compose(request):
 
@@ -79,6 +79,7 @@ def compose(request):
     return JsonResponse({"message": "Email sent successfully."}, status=201)
 
 
+@csrf_exempt
 @login_required
 def mailbox(request, mailbox):
 
@@ -134,8 +135,6 @@ def email(request, email_id):
             "error": "GET or PUT request required."
         }, status=400)
 
-
-@csrf_exempt
 def login_view(request):
     if request.method == "POST":
 
