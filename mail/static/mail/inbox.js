@@ -43,7 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
   // By default, load the inbox
   history.pushState({page:'inbox'},'', 'inbox');
   load_mailbox('inbox');
-});
+}); // end of addEventListener('DOMContentLoaded'
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
 function compose_email() {
 
@@ -72,13 +87,24 @@ function processForm(event){
     body: body
   };
 
+  let csrftoken = getCookie('csrftoken');
+  // console.log('csrftoken', csrftoken);
   fetch('/emails', {
     method: 'POST',
+    headers: {
+      "X-CSRFToken": csrftoken,
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    credentials: 'same-origin',
     body: JSON.stringify(form_obj)
   })
   .then(response => response.json())
   .then(result => {
     console.log(result)
+  })
+  .catch(error => {
+    console.log(error);
   });
   load_mailbox('inbox');
 }
@@ -94,7 +120,7 @@ function load_mailbox(mailbox) {
   // Show the mailbox name
   emails_view.innerHTML = `<h3 class='inbox-title'>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
   // fetch emails and present them
-  fetch(`emails/${mailbox}`)
+  fetch(`/emails/${mailbox}`)
   .then(response => response.json())
   .then(data =>{
     const ul_elem = document.createElement('ul');
@@ -120,6 +146,9 @@ function load_mailbox(mailbox) {
       ul_elem.append(li_elem)
     };
     emails_view.append(ul_elem);
+  })
+  .catch(error => {
+    console.log(error);
   })
 }
 
@@ -172,15 +201,6 @@ function getMessage(id){
       }
       button_list.append(archive);
 
-      // set the mail as read
-      fetch(`/emails/${id}`, {
-        method:'PUT',
-        body: JSON.stringify({read:true})
-      })
-      .then(response =>{
-        console.log(response.status)
-      });
-
       let unread = document.createElement('button');
       unread.className = 'btn btn-sm btn-secondary mt-3 mr-2';
       unread.innerHTML = 'Mark as unread';
@@ -203,28 +223,52 @@ function getMessage(id){
       emailsView.append(div_header);
       emailsView.append(div_body);
       // console.log(`email-${id}= ${email['read']}`);
+  })
+  .catch(error =>{
+    console.log(error);
   });
 }
 
 function processArchive(id, truthy){
   let archive = truthy ? true : false;
+  let csrftoken = getCookie('csrftoken');
   fetch(`/emails/${id}`, {
     method:'PUT',
+    headers: {
+      "X-CSRFToken": csrftoken,
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    credentials: 'same-origin',
     body: JSON.stringify({archived:archive})
   })
   .then(response =>{
     console.log(response.status)
+  })
+  .catch(error => {
+    console.log(error);
   });
   load_mailbox('inbox');
 }
 
 function processUnread(id){
+  // similar to what I do in Postman
+  let csrftoken = getCookie('csrftoken');
   fetch(`/emails/${id}`, {
     method:'PUT',
+    headers: {
+      "X-CSRFToken": csrftoken,
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    credentials: 'same-origin',
     body: JSON.stringify({read:false})
   })
   .then(response =>{
     console.log(response.status)
+  })
+  .catch(error =>{
+    console.log(error);
   });
   load_mailbox('inbox');
 }

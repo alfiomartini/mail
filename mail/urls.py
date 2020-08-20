@@ -12,4 +12,8 @@ urlpatterns = [
     path("emails", views.compose, name="compose"),
     path("emails/<int:email_id>", views.email, name="email"),
     path("emails/<str:mailbox>", views.mailbox, name="mailbox"),
+    path('inbox', views.index, name='index'),
+    path('sent', views.index, name='index'),
+    path('archived', views.index, name='index'),
+    path('compose', views.index, name='index'),
 ]
