@@ -157,6 +157,22 @@ function getMessage(id){
   fetch(`emails/${id}`)
   .then(response => response.json())
   .then(email => {
+      // set the mail as read
+      let csrftoken = getCookie('csrftoken');
+      fetch(`/emails/${id}`, {
+        method:'PUT',
+        headers: {
+          "X-CSRFToken": csrftoken,
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify({read:true})
+      })
+      .then(response =>{
+        console.log(response.status)
+      });
+
       let div_header = document.createElement('ul');
       div_header.className = 'email-header';
       // console.log(email);
