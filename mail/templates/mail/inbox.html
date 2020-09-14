@@ -4,17 +4,15 @@
 {% block body %}
     <h5 class="edit-btn">{{ request.user.email }}</h5>
     <div class="buttons">
-        <button class="btn btn-sm btn-outline-primary mr-2" id="inbox">Inbox</button>
-        <button class="btn btn-sm btn-outline-primary mr-2" id="compose">Compose</button>
-        <button class="btn btn-sm btn-outline-primary mr-2" id="sent">Sent</button>
-        <button class="btn btn-sm btn-outline-primary mr-2" id="archived">Archived</button>
-        <a class="btn btn-sm btn-outline-primary mr-2" href="{% url 'logout' %}">Log Out</a>
+        <button class="btn btn-sm btn-outline-primary m-2" id="inbox">Inbox</button>
+        <button class="btn btn-sm btn-outline-primary m-2" id="compose">Compose</button>
+        <button class="btn btn-sm btn-outline-primary m-2" id="sent">Sent</button>
+        <button class="btn btn-sm btn-outline-primary m-2" id="archived">Archived</button>
+        <a class="btn btn-sm btn-outline-primary m-2" href="{% url 'logout' %}">Log Out</a>
     </div>
     <hr>
 
     <div id="emails-view"></div>
-    
-    <div id="email-display"></div>
 
     <div id="compose-view">
         <h3 class="inbox-title">New Email</h3>
@@ -29,7 +27,7 @@
                 <input class="form-control" id="compose-subject" placeholder="Subject">
             </div>
             <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input type="submit" class="btn btn-primary mt-3"/>
+            <input type="submit" class="btn btn-primary mt-3" value="Send"/>
         </form>
     </div>
 {% endblock %}

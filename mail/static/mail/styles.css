@@ -10,15 +10,15 @@ body{
 
     background-image: url('/static/mail/img/muukii-mailbox-unsplash-min-1400-900.jpg');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center left;
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
 }
 
 .main{
-    width: 80%;
-    margin:20px auto;
+    width: 90%;
+    margin:40px auto;
 }
 
 .main .user{
@@ -39,6 +39,10 @@ textarea {
 
  .buttons{
      margin-top: 20px;
+     display: flex;
+     flex-direction: row;
+     justify-content: start;
+     flex-wrap: wrap;
  }
  .btn-outline-primary {
      background-color: whitesmoke !important;
@@ -49,13 +53,20 @@ textarea {
     background-color: black !important;
     color: whitesmoke !important;
 }
+
+
 .inbox-container{
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
 .inbox-message{
     padding:5px 10px;
     border: 1px solid black;
+    width: 80%;
+    margin: auto;
 }
 
 .inbox-message:hover{
@@ -64,13 +75,18 @@ textarea {
     color: whitesmoke;
     border: 1px solid blue;
 }
+
+
 span.inbox-sender{
     /* font-weight: bold; */
     margin-right: 15px;
 }
 
+.span.inbox-subject{
+    display: inline-block;
+}
 span.inbox-date{
-    float:right
+    float:right;
 }
 
 .message-unread{
@@ -78,7 +94,7 @@ span.inbox-date{
     color:black;
 }
 .message-read{
-    background-color:darkslategray;
+    background-color:#303030;
     color:whitesmoke;
 }
 
@@ -140,4 +156,19 @@ form label {
 
   .message{
       color: whitesmoke;
+  }
+
+  /* Media Queries */
+
+  @media (max-width:768px){
+      .inbox-message{
+          width:100%;
+          margin: auto;
+      }
+  }
+
+  @media (max-width:600px){
+      span.inbox-date{
+          display: none;
+      }
   }
