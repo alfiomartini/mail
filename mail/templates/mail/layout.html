@@ -8,6 +8,17 @@
         <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
         {% block script %}
         {% endblock %}
+    <style>
+        body{
+            background-color: #330033;
+            background-image: url('{% static "mail/img/muukii-mailbox-unsplash-min-1400-900.jpg" %}');
+            background-repeat: no-repeat;
+            background-position: center left;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100vh;
+    }
+    </style>
     </head>
     <body>
         <div class="main">
