@@ -45,6 +45,7 @@ textarea {
  .btn-outline-primary {
      background-color: whitesmoke !important;
      color: black;
+     margin-left:0 !important;
  }
 
  .btn-outline-primary:hover {

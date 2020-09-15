@@ -1,47 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-  window.onpopstate = (event) =>{
-    if (event.state !== null){
-      let page = event.state.page;
-      console.log(page);
-      if (page === 'compose'){
-        compose_email();
-      }
-      else if (page === 'message'){
-        let message_id = event.state.message_id;
-        console.log(message_id);
-        getMessage(message_id);
-      }
-      else{
-        load_mailbox(page);
-      }
-    }
-  }
-
+ 
   // Use buttons to toggle between views
 
   let inbox = document.querySelector('#inbox');
   inbox.addEventListener('click', () => {
-    history.pushState({page:'inbox'},'', 'inbox');
     load_mailbox('inbox');
   });
   let sent = document.querySelector('#sent');
   sent.addEventListener('click', () => {
-      history.pushState({page:'sent'}, '', 'sent');
       load_mailbox('sent');
   });
   let archived = document.querySelector('#archived');
   archived.addEventListener('click', () => {
-    history.pushState({page:'sent'},'', 'archived');
     load_mailbox('archive');
   });
   let compose = document.querySelector('#compose');
   compose.addEventListener('click', () => {
-    history.pushState({page:'compose'}, '', 'compose');
     compose_email(); 
   });
   // By default, load the inbox
-  history.pushState({page:'inbox'},'', 'inbox');
   load_mailbox('inbox');
 }); // end of addEventListener('DOMContentLoaded'
 
@@ -139,8 +116,6 @@ function load_mailbox(mailbox) {
       li_elem.id = `${data[k]['id']}`;
       li_elem.addEventListener('click', () => {
         let message_id = data[k]['id'];
-        history.pushState({page:'message', message_id:message_id},
-                          '',`message${message_id}`);
         getMessage(message_id);
       });
       ul_elem.append(li_elem)
