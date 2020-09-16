@@ -101,6 +101,8 @@ def mailbox(request, mailbox):
 
     # Return emails in reverse chronologial order
     emails = emails.order_by("-timestamp").all()
+    # The first parameter, should be a dict instance. If the safe parameter is set to False 
+    # it can be any JSON-serializable object.
     return JsonResponse([email.serialize() for email in emails], safe=False)
 
 
@@ -126,6 +128,11 @@ def email(request, email_id):
         if data.get("archived") is not None:
             email.archived = data["archived"]
         email.save()
+        return HttpResponse(status=204)
+
+    # Have to revise this
+    elif request.method == 'DELETE':
+        email.delete()
         return HttpResponse(status=204)
 
     # Email must be via GET or PUT

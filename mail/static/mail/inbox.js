@@ -98,7 +98,15 @@ function load_mailbox(mailbox) {
   emails_view.innerHTML = `<h3 class='inbox-title'>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
   // fetch emails and present them
   fetch(`/emails/${mailbox}`)
-  .then(response => response.json())
+  .then(response => {
+    // console.log('response', response);
+    // console.log('url', response.url);
+    // console.log('text', response.text());
+    // converts json data into js object
+    json = response.json();
+    // console.log(json);
+    return json;
+  })
   .then(data =>{
     const ul_elem = document.createElement('ul');
     ul_elem.className = 'inbox-container';
@@ -120,7 +128,7 @@ function load_mailbox(mailbox) {
       });
       ul_elem.append(li_elem)
     };
-    emails_view.append(ul_elem);
+    emails_view.append(ul_elem); // or innerHTML = ul_elem
   })
   .catch(error => {
     console.log(error);
@@ -146,6 +154,9 @@ function getMessage(id){
       })
       .then(response =>{
         console.log(response.status)
+      })
+      .catch(error => {
+        console.log(error);
       });
 
       let div_header = document.createElement('ul');
@@ -199,6 +210,15 @@ function getMessage(id){
         processUnread(id);
       });
       button_list.append(unread);
+
+      // delete button
+      let del = document.createElement('button');
+      del.className = 'btn btn-sm btn-secondary mt-3 mr-2';
+      del.innerHTML = 'Delete';
+      del.addEventListener('click', () => {
+        processDelete(id);
+      });
+      button_list.append(del);
       
 
       div_header.append(button_list);
@@ -218,6 +238,26 @@ function getMessage(id){
   .catch(error =>{
     console.log(error);
   });
+}
+
+function processDelete(id){
+    let csrftoken = getCookie('csrftoken');
+    fetch(`/emails/${id}`, {
+      method:'DELETE',
+      headers: {
+        "X-CSRFToken": csrftoken,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: 'same-origin'
+    })
+    .then(response =>{
+      load_mailbox('inbox');
+      console.log('Sucess:', response.status);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
 
 function processArchive(id, truthy){
