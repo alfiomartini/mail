@@ -18,10 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
   compose.addEventListener('click', () => {
     compose_email(); 
   });
+
+  document.querySelector('.readme-link').addEventListener('click', showReadme);
   // By default, load the inbox
   load_mailbox('inbox');
 }); // end of addEventListener('DOMContentLoaded'
 
+function showReadme(event){
+  event.preventDefault();
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#readme-view').style.display = 'block';
+  document.querySelector('#compose-view').style.display = 'none';
+}
 function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(';');
@@ -41,6 +49,7 @@ function compose_email() {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#readme-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
@@ -93,6 +102,7 @@ function load_mailbox(mailbox) {
   emails_view.style.display = 'block';
   let compose_view = document.querySelector('#compose-view');
   compose_view.style.display = 'none';
+  document.querySelector('#readme-view').style.display = 'none';
 
   // Show the mailbox name
   emails_view.innerHTML = `<h3 class='inbox-title'>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;

@@ -2,7 +2,18 @@
 {% load static %}
 
 {% block body %}
-    <h5 class="edit-btn">{{ request.user.email }}</h5>
+    <h5 class="edit-btn mr-3 mb-3">{{ request.user.email }}</h5>
+    <div class="mydropdown edit-btn">
+        <span>About</span>
+        <div class="mydropdown-content">
+            <div><a class="" 
+              href="https://github.com/alfiomartini/mail" target="_blank">
+              Github
+               </a></div>
+            <div><a class="readme-link" href="#">Readme</a></div>
+            <div><a class="" href="mailto: alfio.martini@gmail.com">Email</a></div>
+        </div>
+      </div>
     <div class="buttons">
         <button class="btn btn-sm btn-outline-primary m-2" id="inbox">Inbox</button>
         <button class="btn btn-sm btn-outline-primary m-2" id="compose">Compose</button>
@@ -13,7 +24,6 @@
     <hr>
 
     <div id="emails-view"></div>
-
     <div id="compose-view">
         <h3 class="inbox-title">New Email</h3>
         <form id="compose-form">
@@ -29,6 +39,13 @@
             <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
             <input type="submit" class="btn btn-primary mt-3" value="Send"/>
         </form>
+    </div>
+    <div id="readme-view">
+        <div class="readme-wrapper">
+            <div class="readme">
+                <p>This application is a <strong>front-end</strong> for an email client that makes calls to an existing  API written in <strong>Django</strong>. The API supports GET, POST and PUT requests to send, receive and get messages from a database. I extented it to deal with DELETE requests as well. No actual messages are sent. The front-end is written with <em>HTML</em>, <em>CSS</em>, <em>Bootstrap</em> and <em>JavaScript</em>. The entire application is just a single page, with JavaScript used to control de interface. The interface supports basic <em>registration</em> and <em>authentication</em> of users, display of <em>inbox</em>, <em>sent</em> and <em>archived</em> messages. <em>Read</em> and <em>unread</em> messages are displayed with a <em>gray</em>, respectively <em>white</em>,  background.  Inbox messages can be replied, (un)archived, deleted and marked as unread.</p>
+            </div>
+          </div>
     </div>
 {% endblock %}
 
