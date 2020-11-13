@@ -4,26 +4,26 @@
 <html lang="en">
     <head>
         <title>{% block title %}Mail{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="icon" type="image/png"  href="{% static 'mail/favicon.ico' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
-        {% block script %}
-        {% endblock %}
-    <style>
-        body{
-            background-color: #330033;
-            background-image: url('{% static "mail/img/muukii-mailbox-unsplash-min-1400-900.jpg" %}');
-            background-repeat: no-repeat;
-            background-position: center left;
-            background-size: cover;
-            background-attachment: fixed;
-            height: 100vh;
-    }
-    </style>
+        <link  href="{% static 'mail/favicon.ico' %}" rel="icon">
+        <style>
+            body{
+                background-color: #330033;
+                background-image: url('{% static "mail/img/muukii-mailbox-unsplash-min-1400-900.jpg" %}');
+                background-repeat: no-repeat;
+                background-position: center left;
+                background-size: cover;
+                background-attachment: fixed;
+                height: 100vh;
+        }
+        </style>
     </head>
     <body>
         <div class="main">
             {% block body %}
+            {% endblock %}
+            {% block script %}
             {% endblock %}
         </div>
     </body>
