@@ -1,7 +1,7 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* body{
@@ -14,225 +14,227 @@
     height: 100vh;
 } */
 
-.main{
-    width: 90%;
-    margin:40px auto;
+.main {
+  width: 90%;
+  margin: 20px auto;
 }
 
-.main .user{
-   color: lightsteelblue;
+.main .user {
+  color: lightsteelblue;
 }
 
 textarea {
-    min-height: 400px;
+  min-height: 400px;
 }
-
 
 /* Inbox */
 
-.inbox-title{
-    color: lightsteelblue;
-    margin-bottom: 15px;
-    margin-top: -15px;
- }
-
- .buttons{
-     margin-top: 10px;
-     display: flex;
-     flex-direction: row;
-     justify-content: start;
-     flex-wrap: wrap;
- }
- .btn-outline-primary {
-     background-color: whitesmoke !important;
-     color: black;
-     margin-left:0 !important;
- }
-
- .btn-outline-primary:hover {
-    background-color: black !important;
-    color: whitesmoke !important;
+.inbox-title {
+  color: lightsteelblue;
+  margin-bottom: 15px;
+  margin-top: -15px;
 }
 
-
-.inbox-container{
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+.btn-outline-primary {
+  background-color: whitesmoke !important;
+  color: black;
+  margin-left: 0 !important;
 }
 
-.inbox-message{
-    padding:5px 10px;
-    border: 1px solid black;
-    width: 80%;
-    margin: auto;
+.btn-outline-primary:hover {
+  background-color: black !important;
+  color: whitesmoke !important;
 }
 
-.inbox-message:hover{
-    cursor: pointer;
-    background-color: black;
-    color: whitesmoke;
-    border: 1px solid blue;
+.inbox-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
-
-span.inbox-sender{
-    /* font-weight: bold; */
-    margin-right: 15px;
+.inbox-message {
+  padding: 5px 10px;
+  border: 1px solid black;
+  width: 80%;
+  margin: auto;
 }
 
-.span.inbox-subject{
-    display: inline-block;
-}
-span.inbox-date{
-    float:right;
+.inbox-message:hover {
+  cursor: pointer;
+  background-color: black;
+  color: whitesmoke;
+  border: 1px solid blue;
 }
 
-.message-unread{
-    background-color: white;
-    color:black;
+span.inbox-sender {
+  /* font-weight: bold; */
+  margin-right: 15px;
 }
-.message-read{
-    background-color:#303030;
-    color:whitesmoke;
+
+.span.inbox-subject {
+  display: inline-block;
+}
+span.inbox-date {
+  float: right;
+}
+
+.message-unread {
+  background-color: white;
+  color: black;
+}
+.message-read {
+  background-color: #303030;
+  color: whitesmoke;
 }
 
 /* Messages */
 
 .header-buttons .btn:hover {
-    background-color: black !important;
-    color: whitesmoke !important;
+  background-color: black !important;
+  color: whitesmoke !important;
 }
 
-.email-header{
-    list-style-type: none;
-    background-color: white;
-    color: black;
-    padding: 20px;
+.email-header {
+  list-style-type: none;
+  background-color: white;
+  color: black;
+  padding: 20px;
 }
 
-.email-body{
-    border-top: 1px solid black;
-    background-color: white;
-    color: black;
-    padding: 20px;
-    margin-top: -20px;
+.email-body {
+  border-top: 1px solid black;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  margin-top: -20px;
 }
 
-.email-body p{
-    margin-top: 15px;
+.email-body p {
+  margin-top: 15px;
 }
-span.header-line{
-    font-weight: bold;
+span.header-line {
+  font-weight: bold;
 }
-.email-body{
-    /* margin-top: 15px; */
-    /* preserve white spaces and newlines */
-    white-space: pre-wrap;
+.email-body {
+  /* margin-top: 15px; */
+  /* preserve white spaces and newlines */
+  white-space: pre-wrap;
 }
 /* Compose */
 form label {
-    color: lightsteelblue;
+  color: lightsteelblue;
 }
 /* Utilities */
 
-.edit-btn{
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    background-color: whitesmoke;
-    padding: 4px 12px;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .edit-btn:hover{
-    background-color: black;
-    color: whitesmoke;
-    text-decoration: none;
-  } 
+.edit-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  background-color: whitesmoke;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 5px;
+}
 
-  .message{
-      color: whitesmoke;
-  }
+.edit-btn:hover {
+  background-color: black;
+  color: whitesmoke;
+  text-decoration: none;
+}
 
-  /* CSS Dropdowns */
+.message {
+  color: whitesmoke;
+}
 
+/* CSS Dropdowns */
+
+.mydropdown-box {
+  margin-top: 20px;
+}
 .mydropdown {
-    position: relative;
-    display: block;
-    width: 100px;
-  }
-  
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  padding: 2px;
+}
+
 .mydropdown-content {
-    display: none;
-    position: absolute;
-    top:32px;
-    min-width: 100%;
-    padding: 15px 10px;
-    background-color: #330033;
-    color: whitesmoke;
-    z-index: 1;
+  display: none;
+  position: absolute;
+  top: 25px;
+  width: 150px;
+  padding: 15px 10px;
+  background-color: #330033;
+  color: whitesmoke;
+  text-align: left;
+  z-index: 1;
 }
-  
+
 .mydropdown:hover .mydropdown-content {
-    display: block;
+  display: block;
 }
 
-.mydropdown-content a{
-    text-decoration: none;
-    color: whitesmoke;
-    padding: 5px 5px;
-    display: block;
-    border-radius: 5px;
+.mydropdown-content a {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 5px 5px;
+  display: block;
+  border-radius: 5px;
 }
 
-.mydropdown-content a:hover{
-    text-decoration: none;
-    color: darkslategray;
-    background-color: whitesmoke;
+.mydropdown-content a:hover {
+  text-decoration: none;
+  color: darkslategray;
+  background-color: whitesmoke;
 }
 
-
-.readme-wrapper{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 60px;
+.readme-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 60px;
 }
 
-.readme{
-    background-color: #330033;
-    color:whitesmoke;
-    padding: 10px 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: justify;
-    width: 60%;
+.readme {
+  background-color: #330033;
+  color: whitesmoke;
+  padding: 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  width: 60%;
 }
 
-.readme a{
-    color: lightgreen;
+.readme a {
+  color: lightgreen;
 }
 
-  /* Media Queries */
+/* Media Queries */
 
-  @media (max-width:768px){
-      .inbox-message{
-          width:100%;
-          margin: auto;
-      }
+@media (max-width: 768px) {
+  .inbox-message {
+    width: 100%;
+    margin: auto;
   }
+}
 
-  @media (max-width:600px){
-      span.inbox-date{
-          display: none;
-      }
+@media (max-width: 600px) {
+  span.inbox-date {
+    display: none;
   }
+}
 
-  @media (max-width:768px){
-    .readme{
-        width: 80%;
-    }
+@media (max-width: 768px) {
+  .readme {
+    width: 80%;
+  }
 }

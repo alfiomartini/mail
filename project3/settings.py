@@ -24,7 +24,6 @@ SECRET_KEY = os.environ.get('MAIL_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # https://stackoverflow.com/questions/31685688/is-allowed-hosts-needed-on-heroku

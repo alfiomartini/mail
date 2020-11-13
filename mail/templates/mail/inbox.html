@@ -2,17 +2,20 @@
 {% load static %}
 
 {% block body %}
+  <div class="mydropdown-box">
     <h5 class="edit-btn mr-3 mb-3">{{ request.user.email }}</h5>
-    <div class="mydropdown edit-btn">
+    <span class="mydropdown edit-btn">
         <span>About</span>
         <div class="mydropdown-content">
-            <div><a class="" href="https://github.com/alfiomartini/mail" target="_blank">
-              Github
+            <div><a class="" href="https://alfiomartini.github.io" target="_blank">
+              Github Page
                </a></div>
+            <div><a href="https://github.com/alfiomartini/mail" target="_blank">Source Code</a></div>
             <div><a class="readme-link" href="">Readme</a></div>
-            <div><a class="" href="mailto: alfio.martini@gmail.com">Email</a></div>
+            <div><a class="readme-link" href="https://youtu.be/2oK7NToNfp4" target="_blank">Whatch me</a></div>
         </div>
-      </div>
+    </span>
+  </div>
     <div class="buttons">
         <button class="btn btn-sm btn-outline-primary m-2" id="inbox">Inbox</button>
         <button class="btn btn-sm btn-outline-primary m-2" id="compose">Compose</button>
