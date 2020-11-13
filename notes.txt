@@ -1,4 +1,4 @@
-user: alfio (alfio.martini@gmail.com,password01)
+user: alfio (alfio.martini@dot.com,password01)
 user: user1,...,user4(userk@gmail.com, password01)
 admin: admin, password01, alfio.martini@gmail.com
 

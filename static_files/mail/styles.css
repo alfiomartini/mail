@@ -1,0 +1,238 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* body{
+    background-color: #330033;
+    background-image: url('/static/mail/img/muukii-mailbox-unsplash-min-1400-900.jpg'); 
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+} */
+
+.main{
+    width: 90%;
+    margin:40px auto;
+}
+
+.main .user{
+   color: lightsteelblue;
+}
+
+textarea {
+    min-height: 400px;
+}
+
+
+/* Inbox */
+
+.inbox-title{
+    color: lightsteelblue;
+    margin-bottom: 15px;
+    margin-top: -15px;
+ }
+
+ .buttons{
+     margin-top: 10px;
+     display: flex;
+     flex-direction: row;
+     justify-content: start;
+     flex-wrap: wrap;
+ }
+ .btn-outline-primary {
+     background-color: whitesmoke !important;
+     color: black;
+     margin-left:0 !important;
+ }
+
+ .btn-outline-primary:hover {
+    background-color: black !important;
+    color: whitesmoke !important;
+}
+
+
+.inbox-container{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.inbox-message{
+    padding:5px 10px;
+    border: 1px solid black;
+    width: 80%;
+    margin: auto;
+}
+
+.inbox-message:hover{
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
+    border: 1px solid blue;
+}
+
+
+span.inbox-sender{
+    /* font-weight: bold; */
+    margin-right: 15px;
+}
+
+.span.inbox-subject{
+    display: inline-block;
+}
+span.inbox-date{
+    float:right;
+}
+
+.message-unread{
+    background-color: white;
+    color:black;
+}
+.message-read{
+    background-color:#303030;
+    color:whitesmoke;
+}
+
+/* Messages */
+
+.header-buttons .btn:hover {
+    background-color: black !important;
+    color: whitesmoke !important;
+}
+
+.email-header{
+    list-style-type: none;
+    background-color: white;
+    color: black;
+    padding: 20px;
+}
+
+.email-body{
+    border-top: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    margin-top: -20px;
+}
+
+.email-body p{
+    margin-top: 15px;
+}
+span.header-line{
+    font-weight: bold;
+}
+.email-body{
+    /* margin-top: 15px; */
+    /* preserve white spaces and newlines */
+    white-space: pre-wrap;
+}
+/* Compose */
+form label {
+    color: lightsteelblue;
+}
+/* Utilities */
+
+.edit-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    background-color: whitesmoke;
+    padding: 4px 12px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .edit-btn:hover{
+    background-color: black;
+    color: whitesmoke;
+    text-decoration: none;
+  } 
+
+  .message{
+      color: whitesmoke;
+  }
+
+  /* CSS Dropdowns */
+
+.mydropdown {
+    position: relative;
+    display: block;
+    width: 100px;
+  }
+  
+.mydropdown-content {
+    display: none;
+    position: absolute;
+    top:32px;
+    min-width: 100%;
+    padding: 15px 10px;
+    background-color: #330033;
+    color: whitesmoke;
+    z-index: 1;
+}
+  
+.mydropdown:hover .mydropdown-content {
+    display: block;
+}
+
+.mydropdown-content a{
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 5px 5px;
+    display: block;
+    border-radius: 5px;
+}
+
+.mydropdown-content a:hover{
+    text-decoration: none;
+    color: darkslategray;
+    background-color: whitesmoke;
+}
+
+
+.readme-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 60px;
+}
+
+.readme{
+    background-color: #330033;
+    color:whitesmoke;
+    padding: 10px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    width: 60%;
+}
+
+.readme a{
+    color: lightgreen;
+}
+
+  /* Media Queries */
+
+  @media (max-width:768px){
+      .inbox-message{
+          width:100%;
+          margin: auto;
+      }
+  }
+
+  @media (max-width:600px){
+      span.inbox-date{
+          display: none;
+      }
+  }
+
+  @media (max-width:768px){
+    .readme{
+        width: 80%;
+    }
+}
